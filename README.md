@@ -195,7 +195,7 @@ Replace the question with your desired query. If no question is provided, it def
 
 ```
 .
-├── your_main_script_name.py  # Main Python script for the RAG system
+├── graph_neo4j.py            # Main Python script for the RAG system
 ├── sample_data.txt           # Example plain text document
 ├── chroma_db/                # Directory where Chroma DB embeddings will be persisted
 ├── requirements.txt          # Python dependencies
