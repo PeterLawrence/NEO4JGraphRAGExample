@@ -1,0 +1,10 @@
+chromadb==1.0.17
+langchain_chroma==0.2.5
+langchain_community==0.3.27
+langchain_core==0.3.74
+langchain_experimental==0.3.4
+langchain_neo4j==0.5.0
+langchain_ollama==0.3.6
+langchain_text_splitters==0.3.9
+neo4j==5.28.1
+pydantic==2.11.7
