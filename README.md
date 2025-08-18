@@ -191,6 +191,9 @@ Application finished.
 
 Replace the question with your desired query. If no question is provided, it defaults to "What are the conclusions of this document?".
 
+Note the format used in this LLM request is *Triplet Format*
+
+
 ## Project Structure
 
 ```
@@ -201,3 +204,19 @@ Replace the question with your desired query. If no question is provided, it def
 ├── requirements.txt          # Python dependencies
 └── README.md                 # This file
 ```
+
+## Useful Cypher Neo4J Formats  queries for checking database 
+
+Find all nodes associated with Mia
+```
+Match (n:Person {id:"Mia"}) <- [r] -(b) return n, b
+```
+Find all links and nodes which have the directed from Mia (i.e. people mentored by Mia)
+```
+Match (n:Person {id:"Mia"}) - [r] -> (b) return n, r, b
+```
+Find all nodes and links associated with Mia, which are not of the type Document
+```
+Match (n:Person {id:"Mia"}) - [r] -(b:!Document) return n, b
+```
+
