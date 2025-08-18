@@ -69,7 +69,6 @@ Open the Python script and adjust the constants at the top of the file to match 
 
 ```python
 # --- Configuration Constants ---
-MARKDOWN_PATH = "Markdown/FinalPaper.md" # Path to your main markdown document
 TEXT_FILE_PATH = "./sample_data.txt" # Path to your sample text document
 
 # LLM Settings
@@ -198,7 +197,7 @@ Note the format used in this LLM request is *Triplet Format*
 
 ```
 .
-├── your_main_script_name.py  # Main Python script for the RAG system
+├── graph_neo4j.py            # Main Python script for the RAG system
 ├── sample_data.txt           # Example plain text document
 ├── chroma_db/                # Directory where Chroma DB embeddings will be persisted
 ├── requirements.txt          # Python dependencies
