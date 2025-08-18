@@ -190,7 +190,7 @@ Application finished.
 
 Replace the question with your desired query. If no question is provided, it defaults to "What are the conclusions of this document?".
 
-Note the format used in this LLM request is *Triplet Format*
+Note the format used in this LLM request is *Triplet Format*.
 
 
 ## Project Structure
