@@ -14,17 +14,7 @@ The building elements and their relationships are imported from a JSON Lines fil
 - The data output of the graph is therefore formatted into a structured text suitable for input to a local LLM.
 - The LLM can then use this graph-based context to answer questions, generate summaries, or assist in navigation tasks.
 
-### Example Use Case
-
-1. **Graph Context Extraction**:
-   - Use `generate_graph_rag_output(room_node, connections)` to create a textual representation of a room and its connections.
-   - This output can be passed to an LLM to answer questions like "What rooms are connected to Room 0-1?"
-
-2. **Route Context Extraction**:
-   - Use `generate_route_rag_output(route_data)` to describe the shortest path between two rooms.
-   - The LLM can use this to generate directions or explain the route.
-
-### Benefits
+### Benefits of representing a building using a graph database
 
 - Enables intelligent reasoning over spatial data.
 - Enhances chatbot or assistant capabilities with structured building knowledge.
