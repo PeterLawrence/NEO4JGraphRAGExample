@@ -6,7 +6,7 @@ These scripts can be extended to support Retrieval-Augmented Generation (RAG) us
 
 ### How It Works
 
-- The `extractbuilding.py` script includes functions to extract graph context and route information from the Neo4j database.
+- The `extractbuilding.py` script includes functions to extract building graph information and store it to a Neo4j Graph database.
 The building elements and their relationships are imported from a JSON Lines file into a Neo4j database. It categorizes nodes such as rooms, corridors, doors, stairs, and spaces, and establishes relationships like DOOR, STAIR, DIRECT, and CONNECTED_VIA.
 - `accessbuildingdb.py`: Accesses the NEO4J database to extract room connectivity information and computes shortest paths between rooms using NEo4J Cypher queries. It provides detailed room information, generates graph context for RAG (Retrieval-Augmented Generation), and visualizes routes.
  
