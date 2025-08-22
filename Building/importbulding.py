@@ -33,7 +33,7 @@ def import_building_data(tx, data):
                 # and specific labels like 'Room', 'Corridor', 'Door', 'Stairs', 'Space'
                 # based on the title.
                 
-                node_label = "Unkown"
+                node_label = "Unknown"
                 if 'title' in item:
                     a_name = item['title']
                 else:
@@ -43,27 +43,45 @@ def import_building_data(tx, data):
                 
                     if a_name.startswith("Room"):
                         node_label = "Room"
+                    elif a_name.startswith("Bath"):
+                        node_label = "Bathroom"
+                    elif a_name.startswith("W/C") or a_name.startswith("Women") or a_name.startswith("Men"):
+                        node_label = "WC"
+                    elif a_name.startswith("Dining"):
+                        node_label = "Dining"
+                    elif a_name.startswith("Conference") or a_name.startswith("Lounge") or a_name.startswith("Kitchen") or a_name.startswith("Daycare"):
+                        node_label = "Facility"
+                    elif a_name.startswith("Office"):
+                        node_label = "Office"
+                    elif a_name.startswith("Store") or a_name.startswith("Storage"):
+                        node_label = "Storage"
                     elif a_name.startswith("Corridor"):
                         node_label = "Corridor"
-                    elif a_name.startswith("Stairs"):
-                        node_label = "Stairs"
+                    elif a_name.startswith("Stair"):
+                        node_label = "Stair"
                     elif a_name.startswith("Doors_"): # Doors have different labels
                         node_label = "Door"
                     elif a_name.startswith("Space"):
                         node_label = "Space"
                     elif a_name.startswith("Entrance"):
                         node_label = "Entrance"
-                                    # Create/Merge Node
+                    elif a_name.startswith("Lift"):
+                        node_label = "Elevator"
+                    elif "Lobby" in a_name:
+                        node_label = "Lobby"
+                    elif 'shape' in item and item['shape']=="dot":
+                        node_label = "ExternalExit"
+                        
+                    # Create/Merge Node
                     tx.run(f"""
                         MERGE (n:{node_type} {{internalId: $id}})
                         SET n.label = $label,
                             n.type  = $alabel,
                             n.title = $title,
                             n.color = $color,
-                            n.shape = $shape,
-                            n.value = $value
+                            n.area =  $area
                     """, alabel= node_label, id=item['id'], label=item.get('label'), title=a_name,
-                         color=item.get('color'), shape=item.get('shape'), value=item.get('value'))
+                         color=item.get('color'),area=item.get('value'))
 
 
             elif 'from' in item and 'to' in item:  # This is a relationship
@@ -77,6 +95,12 @@ def import_building_data(tx, data):
                         rel_type = "STAIR"
                     elif item.get('color') == '#00FF00':
                         rel_type = "DIRECT"
+                    elif item.get('color') == '#FF00FF':
+                        rel_type = "ESCALATOR"
+                    elif item.get('color') == '#CCCCCC':
+                        rel_type = "LIFT"
+                    elif item.get('title', '').startswith("Lift"):
+                        rel_type = "LIFTDOOR"
                     elif item.get('title', '').startswith("Doors_"):
                         rel_type = "DOOR"
 
